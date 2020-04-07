@@ -153,11 +153,17 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 	protected function _content_template() {
 		//Class 1.7
 		?>
-
 		<!--Javascrip console log If want to see the Console log -->
-		#>
-		console.log(settings);
 		<#
+			var image = {
+				id:settings.imagex.id,
+				url:settings.imagex.url,
+				size:settings.imagesz_size,
+				dimension:settings.imagesz_custom_dimension
+			}
+			var imageUrl = elementor.imagesManager.getImageUrl(image);
+			console.log(imageUrl);
+		#>
 		<!-- Javascrip console log -->
 		<h1 class="heading">
 			{{{settings.heading}}}
