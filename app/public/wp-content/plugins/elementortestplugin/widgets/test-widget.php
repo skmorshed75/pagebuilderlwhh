@@ -150,5 +150,22 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		echo "<p class='description'>".wp_kses_post($heading_description)."</p>";
 	}
 
-	protected function _content_template() {}
+	protected function _content_template() {
+		//Class 1.7
+		?>
+
+		<!--Javascrip console log If want to see the Console log -->
+		#>
+		console.log(settings);
+		<#
+		<!-- Javascrip console log -->
+		<h1 class="heading">
+			{{{settings.heading}}}
+		</h1>
+		<p class="description">
+			{{{settings.heading_description}}}
+		</p>
+		<?php			
+		//End Class 1.7
+	}
 }
