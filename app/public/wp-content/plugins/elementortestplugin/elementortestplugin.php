@@ -11,6 +11,7 @@ Text Domain: elementortestplugin
 Domain Path: /languages/
 */
 
+//Class 1.3
 use \Elementor\Plugin as Plugin;
 
 if(!defined('ABSPATH')){
@@ -55,14 +56,32 @@ final class ElementorTestExtension {
 		}
 
 		add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
+
+		//class 1.4
+		add_action('elementor/elements/categories_registered', [$this, 'register_new_category']);
+		//end class 1.4
 	}
+	//class 1.4
+	public function register_new_category($manager) {
+		$manager->add_category('test_category', [
+			'title' => __("Test Category",'eltp'),
+			'icon' => 'fa fa-image'
+		]);
+
+		$manager->add_category('sliders', [
+			'title' => __('Sliders', 'eltp'),
+			'icon' => 'fa fa-video'
+		]);
+	}
+
+
+	//end class 1.4
 
 	public function init_widgets() {
 		// Include Widget files
 		require_once( __DIR__ . '/widgets/test-widget.php' );
 		// Register widget (use \Elementor\Plugin as Plugin line 14)
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Test_Widget() );
-
 	}
 
 	public function admin_notice_minimum_elementor_version() {

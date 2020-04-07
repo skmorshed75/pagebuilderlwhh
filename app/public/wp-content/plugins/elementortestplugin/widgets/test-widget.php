@@ -19,7 +19,9 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 
 	public function get_categories() {
 		//return array("general","basic");
-		return array("general");
+		//return array("general");
+		//Class 1.4
+		return array("general", "test_category", "sliders");
 	}
 
 	protected function _register_controls() {
