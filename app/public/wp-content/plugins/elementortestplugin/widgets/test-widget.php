@@ -42,7 +42,16 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 				'placeholder' => __( 'Type your text', 'eltp' ),
 			]
 		);
+		$this->end_controls_section();
 
+		//Class 1.5
+		$this->start_controls_section(
+			'position_section',
+			[
+				'label' => __('Position', 'eltp'),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
 		$this->add_control(
 			'alignment',
 			[
