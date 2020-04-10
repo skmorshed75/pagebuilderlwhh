@@ -137,6 +137,35 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		);
 		//End class 1.6		
 		$this->end_controls_section();		
+
+		//Class 2.1 Image Control
+		$this->start_controls_section(
+			'image_section',
+			[
+				'label' => __('Image', 'eltp'),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+		$this->add_control(
+			'imagex',
+			[
+				'label' => __('Image','eltp'),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'default' =>[
+					'url' => \Elementor\Utils::get_placeholder_image_src()
+				]
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Image_Size::get_type(),
+			[
+				'default' => 'large',
+				'name' => 'imagesz'
+			]
+		);
+		$this->end_controls_section();
+		// End class 2.1		
 	}
 
 	protected function render() {
@@ -159,6 +188,12 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		echo "<h1 ". $this->get_render_attribute_string('heading') ." >" . esc_html($heading) . "</h1>";
 		echo "<p ". $this->get_render_attribute_string('heading_description') ." >" . wp_kses_post($description) . "</p>";
 		// echo "<p class='description'>" . wp_kses_post($description) . "</p>";
+		//Class 2.1
+		//print_r($settings[image]);
+		//echo wp_get_attachment_image($settings['image']['id'],'large');
+		//or
+		echo \Elementor\Group_Control_Image_Size::get_attachment_image_html($settings,'imagesz','imagex');
+		//End Class 2.1
 	}
 
 	protected function _content_template() {
@@ -167,7 +202,15 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 
 		<!--Javascrip console log If want to see the Console log -->
 		<#
-		console.log(settings);
+			var image = {
+			id:settings.imagex.id,
+			url:settings.imagex.url,
+			size:settings.imagesz_size,
+			dimension:settings.imagesz_custom_dimension
+			}
+
+			var imageUrl = elementor.imagesManager.getImageUrl(image);
+			<!-- console.log(imageUrl); -->
 		#>
 
 		<!-- Class 1.9 -->
@@ -180,6 +223,10 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		#>
 		<h1 {{{ view.getRenderAttributeString('heading') }}}>{{{settings.heading}}}</h1>
 		<p {{{ view.getRenderAttributeString('heading_description') }}}>{{{settings.heading_description}}}</p>
+		<!-- class 2.1 -->
+		<!-- <img src="{{{settings.imagex.url}}}" alt=""> -->
+		<img src="{{{ imageUrl }}}" alt="">
+		<!-- End class 2.1 -->
 		<!--End Class 1.9 -->
 		<!-- Javascrip console log -->
 		<!-- <h1 class="heading">
