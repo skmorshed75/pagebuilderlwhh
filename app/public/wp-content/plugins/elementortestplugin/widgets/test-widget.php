@@ -142,35 +142,52 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		$heading = $settings['heading'];
-		$heading_description = $settings['heading_description'];
+		$description = $settings['heading_description'];
+		//Class 1.9
+		$this->add_inline_editing_attributes('heading','advanced'); //none / basic / advanced to show toolbar
+		$this->add_inline_editing_attributes('heading_description','basic'); //none / basic / advanced to show toolbar while selected title in edit mode
+		$this->add_render_attribute('heading', [
+			'class' => 'heading' //Add heading class in the last
+		]);
+		$this->add_render_attribute('heading_description', [
+			'class' => 'description' //Add description class in the last
+		]);
+		//End Class 1.9
 		//$alignment = $settings['alignment'];
 		//echo "<h1 style = 'text-align:".esc_attr($alignment)."'>".esc_html($heading)."</h1>";
-		//Class 1.6
-		echo "<h1 class='heading'>".esc_html($heading)."</h1>";
-		echo "<p class='description'>".wp_kses_post($heading_description)."</p>";
+		//Class 1.6 & 1.9
+		echo "<h1 ". $this->get_render_attribute_string('heading') ." >" . esc_html($heading) . "</h1>";
+		echo "<p ". $this->get_render_attribute_string('heading_description') ." >" . wp_kses_post($description) . "</p>";
+		// echo "<p class='description'>" . wp_kses_post($description) . "</p>";
 	}
 
 	protected function _content_template() {
 		//Class 1.7
 		?>
+
 		<!--Javascrip console log If want to see the Console log -->
 		<#
-			var image = {
-				id:settings.imagex.id,
-				url:settings.imagex.url,
-				size:settings.imagesz_size,
-				dimension:settings.imagesz_custom_dimension
-			}
-			var imageUrl = elementor.imagesManager.getImageUrl(image);
-			console.log(imageUrl);
+		console.log(settings);
 		#>
+
+		<!-- Class 1.9 -->
+		<#
+			view.addInlineEditingAttributes('heading','none');
+			view.addRenderAttribute('heading',{'class':'heading'});
+
+			view.addInlineEditingAttributes('heading_description','none');
+			view.addRenderAttribute('heading_description',{'class':'description'});
+		#>
+		<h1 {{{ view.getRenderAttributeString('heading') }}}>{{{settings.heading}}}</h1>
+		<p {{{ view.getRenderAttributeString('heading_description') }}}>{{{settings.heading_description}}}</p>
+		<!--End Class 1.9 -->
 		<!-- Javascrip console log -->
-		<h1 class="heading">
+		<!-- <h1 class="heading">
 			{{{settings.heading}}}
-		</h1>
-		<p class="description">
+		</h1> -->
+		<!-- <p class="description">
 			{{{settings.heading_description}}}
-		</p>
+		</p> -->
 		<?php			
 		//End Class 1.7
 	}
