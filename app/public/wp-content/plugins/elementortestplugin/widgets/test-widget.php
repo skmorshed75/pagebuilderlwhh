@@ -228,33 +228,46 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		);
 		//End Class 2.6
 
-		//Class 2.7
+
+		//End Class 2.8
 		$this->add_control(
-			'demo-font_p1',
+			'demo_popover',
 			[
-				'label' => __('Font for P1','eltp'),
-				'type' => \Elementor\Controls_Manager::FONT,
-				'default' =>"'Open Sans', 'sans-serif'",
-				'selectors' =>[
-					'{{WRAPPER}} .p1'=>'font-family:{{VALUE}}'
-				]
+				'label' => __('Fonts','eltp'),
+				'type' => \Elementor\Controls_Manager::POPOVER_TOGGLE,
 			]
 
 		);
-
-		$this->add_control(
-			'demo-font_p2',
-			[
-				'label' => __('Font for P2','eltp'),
-				'type' => \Elementor\Controls_Manager::FONT,
-				'default' =>"'Arial', 'sans-serif'",
-				'selectors' =>[
-					'{{WRAPPER}} .p2'=>'font-family:{{VALUE}}',
+		$this->start_popover();
+			//Class 2.7
+			$this->add_control(
+				'demo-font_p1',
+				[
+					'label' => __('Font for P1','eltp'),
+					'type' => \Elementor\Controls_Manager::FONT,
+					'default' =>"'Open Sans', 'sans-serif'",
+					'selectors' =>[
+						'{{WRAPPER}} .p1'=>'font-family:{{VALUE}}'
+					]
 				]
-			]
 
-		);
-		//End Class 2.7
+			);
+
+			$this->add_control(
+				'demo-font_p2',
+				[
+					'label' => __('Font for P2','eltp'),
+					'type' => \Elementor\Controls_Manager::FONT,
+					'default' =>"'Arial', 'sans-serif'",
+					'selectors' =>[
+						'{{WRAPPER}} .p2'=>'font-family:{{VALUE}}',
+					]
+				]
+
+			);
+			//End Class 2.7
+			$this->end_popover();
+		//End Class 2.8
 		$this->end_controls_section();
 
 
