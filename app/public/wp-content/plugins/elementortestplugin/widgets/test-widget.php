@@ -304,6 +304,20 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 
 		);
 		//End Class 2.9
+		
+		// Class 2.10
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'label' => __('Typography for P4','eltp'),
+				'name' => __('demo_typography','eltp'),
+				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'selector' =>'{{WRAPPER}} .p3',
+			]
+
+		);
+
+		// End Class 2.10
 		$this->end_controls_section();
 
 
@@ -370,6 +384,10 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
 		</p>
 		<p class="p2">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+		</p>
+		<!-- Class 2.10 -->
+		<p class="p3">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
 		</p>
 		<?php
@@ -457,6 +475,11 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		</p>
 
 		<p class="p2">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+		</p>
+
+		<!-- Class 2.10 -->
+		<p class="p3">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
 		</p>
 
