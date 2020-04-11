@@ -312,12 +312,26 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 				'label' => __('Typography for P4','eltp'),
 				'name' => __('demo_typography','eltp'),
 				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				//'selectors' =>['{{WRAPPER}} .p3',{{WRAPPER}} .p2'],
 				'selector' =>'{{WRAPPER}} .p3',
 			]
 
 		);
-
 		// End Class 2.10
+
+		// Class 2.11
+		$this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'label' => __('Text Shadow','eltp'),
+				'name' => __('demo_ts','eltp'),
+				//'selectors' =>['{{WRAPPER}} .p3',{{WRAPPER}} .p2'],
+				'selector' =>'{{WRAPPER}} .p3',
+			]
+
+		);
+		// End Class 2.10
+		
 		$this->end_controls_section();
 
 
