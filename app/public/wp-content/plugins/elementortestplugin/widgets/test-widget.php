@@ -256,7 +256,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			$this->add_control(
 				'demo-font_p2',
 				[
-					'label' => __('Font for P2','eltp'),
+					'label' => __('Fonts for P2','eltp'),
 					'type' => \Elementor\Controls_Manager::FONT,
 					'default' =>"'Arial', 'sans-serif'",
 					'selectors' =>[
@@ -267,7 +267,43 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			);
 			//End Class 2.7
 			$this->end_popover();
-		//End Class 2.8
+			//End Class 2.8
+			
+			//End Class 2.9
+			$this->add_control(
+			'demo-slider',
+			[
+				'label' => __('Fonts Size','eltp'),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => ['px','%','rem'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 120,
+						'step' => 5
+					],
+					'%' => [
+						'min' => 10,
+						'max' => 200,
+						'step' => 10
+					],
+					'rem' => [
+						'min' => 5,
+						'max' => 80,
+						'step' => 2
+					]
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 60
+				],
+				'selectors' => [
+					'{{WRAPPER}} .p1 '=>'font-size:{{SIZE}}{{UNIT}}'
+				]
+			]
+
+		);
+		//End Class 2.9
 		$this->end_controls_section();
 
 
