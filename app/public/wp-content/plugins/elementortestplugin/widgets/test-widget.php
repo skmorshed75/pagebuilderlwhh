@@ -167,9 +167,6 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->end_controls_section();
 		// End class 2.1		
 
-
-
-
 		//Class 2.2
 		$this->start_controls_section(
 			'demo_section',
@@ -178,6 +175,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
+
 		$this->add_control(
 			'demo_select2',
 			[
@@ -229,6 +227,34 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			]
 		);
 		//End Class 2.6
+
+		//Class 2.7
+		$this->add_control(
+			'demo-font_p1',
+			[
+				'label' => __('Font for P1','eltp'),
+				'type' => \Elementor\Controls_Manager::FONT,
+				'default' =>"'Open Sans', 'sans-serif'",
+				'selectors' =>[
+					'{{WRAPPER}} .p1'=>'font-family:{{VALUE}}'
+				]
+			]
+
+		);
+
+		$this->add_control(
+			'demo-font_p2',
+			[
+				'label' => __('Font for P2','eltp'),
+				'type' => \Elementor\Controls_Manager::FONT,
+				'default' =>"'Arial', 'sans-serif'",
+				'selectors' =>[
+					'{{WRAPPER}} .p2'=>'font-family:{{VALUE}}',
+				]
+			]
+
+		);
+		//End Class 2.7
 		$this->end_controls_section();
 
 
@@ -286,6 +312,20 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		echo '<i class = "'. $settings['demo_icon'] .'"></i>';
 		echo '</div>';
 		//End Class 2.6
+
+		// Class 2.7
+		echo '<div>';
+		?>
+		<p class="p1">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+		</p>
+		<p class="p2">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+		</p>
+		<?php
+		echo '</div>';
+		//End Class 2.7
 	}
 
 	protected function _content_template() {
@@ -360,6 +400,18 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			<i class = "{{settings.demo_icon}}"></i>
 		</div>
 		<!-- End Class 2.6 -->
+
+		<!-- Class 2.7 -->
+		<p class="p1">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+		</p>
+
+		<p class="p2">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+		</p>
+
+		<!-- End Class 2.7 -->
 		<?php			
 		
 	}
