@@ -10,7 +10,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 	}
 
 	public function get_title() {
-		return __("TestWidget","eltp");
+		return __("TestWidget","elementortestplugin");
 	}
 
 	public function get_icon() {
@@ -28,7 +28,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'content_section',
 			[
-				'label' => __( 'Content', 'eltp' ),
+				'label' => __( 'Content', 'elementortestplugin' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -36,20 +36,20 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'heading',
 			[
-				'label' => __( 'Heading', 'eltp' ),
+				'label' => __( 'Heading', 'elementortestplugin' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'input_type' => 'text',
-				'placeholder' => __( 'Type your heading', 'eltp' ),
+				'placeholder' => __( 'Type your heading', 'elementortestplugin' ),
 			]
 		);
 		//class 1.6
 		$this->add_control(
 			'heading_description',
 			[
-				'label' => __( 'Heading Description', 'eltp' ),
+				'label' => __( 'Heading Description', 'elementortestplugin' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'input_type' => 'text',
-				'placeholder' => __( 'Type your Description', 'eltp' ),
+				'placeholder' => __( 'Type your Description', 'elementortestplugin' ),
 			]
 		);
 		// end 1.6
@@ -59,20 +59,20 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'position_section',
 			[
-				'label' => __('Position', 'eltp'),
+				'label' => __('Position', 'elementortestplugin'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
 			'alignment',
 			[
-				'label' => __( 'Alignment', 'eltp' ),
+				'label' => __( 'Alignment', 'elementortestplugin' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'center',
 				'options' => [
-					'left'  => __( 'Left', 'eltp' ),
-					'right' => __( 'Right', 'eltp' ),
-					'center' => __( 'Center', 'eltp' ),
+					'left'  => __( 'Left', 'elementortestplugin' ),
+					'right' => __( 'Right', 'elementortestplugin' ),
+					'center' => __( 'Center', 'elementortestplugin' ),
 				],
 				//Class 1.6
 				'selectors' =>[
@@ -85,13 +85,13 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'description_alignment',
 			[
-				'label' => __( 'Description Alignment', 'eltp' ),
+				'label' => __( 'Description Alignment', 'elementortestplugin' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'center',
 				'options' => [
-					'left'  => __( 'Left', 'eltp' ),
-					'right' => __( 'Right', 'eltp' ),
-					'center' => __( 'Center', 'eltp' ),
+					'left'  => __( 'Left', 'elementortestplugin' ),
+					'right' => __( 'Right', 'elementortestplugin' ),
+					'center' => __( 'Center', 'elementortestplugin' ),
 				],
 				//Class 1.6
 				'selectors' =>[
@@ -108,14 +108,14 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'color_section',
 			[
-				'label' => __('Color', 'eltp'),
+				'label' => __('Color', 'elementortestplugin'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);		
 		$this->add_control(
 			'heading_color',
 			[
-				'label' => __( 'Heading Color', 'eltp' ),
+				'label' => __( 'Heading Color', 'elementortestplugin' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '#224400',
 				'selectors' =>[
@@ -127,7 +127,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'description_color',
 			[
-				'label' => __( 'Description Color', 'eltp' ),
+				'label' => __( 'Description Color', 'elementortestplugin' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '#666666',
 				'selectors' =>[
@@ -142,14 +142,14 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'image_section',
 			[
-				'label' => __('Image', 'eltp'),
+				'label' => __('Image', 'elementortestplugin'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 		$this->add_control(
 			'imagex',
 			[
-				'label' => __('Image','eltp'),
+				'label' => __('Image','elementortestplugin'),
 				'type' => \Elementor\Controls_Manager::MEDIA,
 				'default' =>[
 					'url' => \Elementor\Utils::get_placeholder_image_src()
@@ -171,7 +171,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'demo_section',
 			[
-				'label' => __('Control Demo', 'eltp'),
+				'label' => __('Control Demo', 'elementortestplugin'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -179,17 +179,17 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'demo_select2',
 			[
-				'label' => __( 'Select 2 Demo', 'eltp' ),
+				'label' => __( 'Select 2 Demo', 'elementortestplugin' ),
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'multiple' => true,
 				'label_block' => true,
 				'options' => [
-					'BD'  => __( 'Bangladesh', 'eltp' ),
-					'IN' => __( 'India', 'eltp' ),
-					'BR' => __( 'Brazil', 'eltp' ),
-					'AR' => __( 'Argentina', 'eltp' ),
-					'AU' => __( 'Australia', 'eltp' ),
-					'DK' => __( 'Denmark', 'eltp' ),
+					'BD'  => __( 'Bangladesh', 'elementortestplugin' ),
+					'IN' => __( 'India', 'elementortestplugin' ),
+					'BR' => __( 'Brazil', 'elementortestplugin' ),
+					'AR' => __( 'Argentina', 'elementortestplugin' ),
+					'AU' => __( 'Australia', 'elementortestplugin' ),
+					'DK' => __( 'Denmark', 'elementortestplugin' ),
 				],
 				//Class 1.6
 				'selectors' =>[
@@ -205,7 +205,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'gallery',
 			[
-				'label' => __('Gallery Control','eltp'),
+				'label' => __('Gallery Control','elementortestplugin'),
 				'type' => \Elementor\Controls_Manager::GALLERY,
 			]
 		);
@@ -215,7 +215,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'demo_icon',
 			[
-				'label' => __('Icon Control','eltp'),
+				'label' => __('Icon Control','elementortestplugin'),
 				'type' => \Elementor\Controls_Manager::ICON,
 				'include' => [
 					'fa fa-facebook',
@@ -233,7 +233,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'demo_popover',
 			[
-				'label' => __('Fonts','eltp'),
+				'label' => __('Fonts','elementortestplugin'),
 				'type' => \Elementor\Controls_Manager::POPOVER_TOGGLE,
 			]
 
@@ -243,7 +243,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			$this->add_control(
 				'demo-font_p1',
 				[
-					'label' => __('Font for P1','eltp'),
+					'label' => __('Font for P1','elementortestplugin'),
 					'type' => \Elementor\Controls_Manager::FONT,
 					'default' =>"'Open Sans', 'sans-serif'",
 					'selectors' =>[
@@ -256,7 +256,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			$this->add_control(
 				'demo-font_p2',
 				[
-					'label' => __('Fonts for P2','eltp'),
+					'label' => __('Fonts for P2','elementortestplugin'),
 					'type' => \Elementor\Controls_Manager::FONT,
 					'default' =>"'Arial', 'sans-serif'",
 					'selectors' =>[
@@ -273,7 +273,7 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			$this->add_control(
 			'demo-slider',
 			[
-				'label' => __('Fonts Size','eltp'),
+				'label' => __('Fonts Size','elementortestplugin'),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => ['px','%','rem'],
 				'range' => [
@@ -309,8 +309,8 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
-				'label' => __('Typography for P4','eltp'),
-				'name' => __('demo_typography','eltp'),
+				'label' => __('Typography for P4','elementortestplugin'),
+				'name' => __('demo_typography','elementortestplugin'),
 				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
 				//'selectors' =>['{{WRAPPER}} .p3',{{WRAPPER}} .p2'],
 				'selector' =>'{{WRAPPER}} .p3',
@@ -323,14 +323,14 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		$this->add_group_control(
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
-				'label' => __('Text Shadow','eltp'),
-				'name' => __('demo_ts','eltp'),
+				'label' => __('Text Shadow','elementortestplugin'),
+				'name' => __('demo_ts','elementortestplugin'),
 				//'selectors' =>['{{WRAPPER}} .p3',{{WRAPPER}} .p2'],
 				'selector' =>'{{WRAPPER}} .p3',
 			]
 
 		);
-		// End Class 2.10
+		// End Class 2.11
 		
 		$this->end_controls_section();
 

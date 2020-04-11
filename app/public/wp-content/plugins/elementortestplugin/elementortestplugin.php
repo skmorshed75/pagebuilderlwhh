@@ -80,8 +80,10 @@ final class ElementorTestExtension {
 	public function init_widgets() {
 		// Include Widget files
 		require_once( __DIR__ . '/widgets/test-widget.php' );
+		require_once( __DIR__ . '/widgets/faq-widget.php' ); //Class 2.12
 		// Register widget (use \Elementor\Plugin as Plugin line 14)
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Test_Widget() );
+		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Faq_Widget() );
 	}
 
 	public function admin_notice_minimum_elementor_version() {
