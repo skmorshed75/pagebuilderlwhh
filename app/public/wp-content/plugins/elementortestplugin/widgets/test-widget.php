@@ -166,6 +166,56 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		);
 		$this->end_controls_section();
 		// End class 2.1		
+
+
+
+
+		//Class 2.2
+		$this->start_controls_section(
+			'demo_section',
+			[
+				'label' => __('Control Demo', 'eltp'),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+		$this->add_control(
+			'demo_select2',
+			[
+				'label' => __( 'Select 2 Demo', 'eltp' ),
+				'type' => \Elementor\Controls_Manager::SELECT2,
+				'multiple' => true,
+				'label_block' => true,
+				'options' => [
+					'BD'  => __( 'Bangladesh', 'eltp' ),
+					'IN' => __( 'India', 'eltp' ),
+					'BR' => __( 'Brazil', 'eltp' ),
+					'AR' => __( 'Argentina', 'eltp' ),
+					'AU' => __( 'Australia', 'eltp' ),
+					'DK' => __( 'Denmark', 'eltp' ),
+				],
+				//Class 1.6
+				'selectors' =>[
+					'{{WRAPPER}} p.description' => 'text-align:{{VALUE}}'
+				],
+				//End Class 1.6
+			]
+		);
+		//class 1.6
+		//End Class 2.2
+		
+		//Class 2.5
+		$this->add_control(
+			'gallery',
+			[
+				'label' => __('Gallery Control','eltp'),
+				'type' => \Elementor\Controls_Manager::GALLERY,
+			]
+		);
+		//End Class 2.5
+		$this->end_controls_section();
+
+
+
 	}
 
 	protected function render() {
@@ -194,6 +244,25 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		//or
 		echo \Elementor\Group_Control_Image_Size::get_attachment_image_html($settings,'imagesz','imagex');
 		//End Class 2.1
+
+		//Class 2.2
+		$countries = $settings['demo_select2'];
+		foreach ($countries as $country){
+			echo $country."</br>";
+		}
+		//print_r($countries);
+		//End Class 2.2
+		//Class 2.5
+		echo '<div>';
+		$gallery_images = $settings['gallery'];
+		echo '<pre>';
+		//print_r($gallery_images);
+		foreach ($gallery_images as $gallery_image) {
+			echo wp_get_attachment_image($gallery_image['id'],'medium');
+		}
+		echo '</pre>';
+		echo '</div>';
+		//End Class 2.5
 	}
 
 	protected function _content_template() {
@@ -203,10 +272,10 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		<!--Javascrip console log If want to see the Console log -->
 		<#
 			var image = {
-			id:settings.imagex.id,
-			url:settings.imagex.url,
-			size:settings.imagesz_size,
-			dimension:settings.imagesz_custom_dimension
+				id:settings.imagex.id,
+				url:settings.imagex.url,
+				size:settings.imagesz_size,
+				dimension:settings.imagesz_custom_dimension
 			}
 
 			var imageUrl = elementor.imagesManager.getImageUrl(image);
@@ -235,7 +304,34 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		<!-- <p class="description">
 			{{{settings.heading_description}}}
 		</p> -->
+		<!-- End Class 1.7 -->
+		<!-- Class 2.2 test with JavaScript -->
+		<ul>
+			<#
+				_.each(settings.demo_select2,function(country){ #>
+					<li>{{{ country }}}</li>
+				<# });
+			#>
+		</ul>
+		<!-- End Class 2.2 test with JavaScript -->
+		<!-- Class 2.5 -->
+		<div>
+			<#
+				_.each(settings.gallery, function(image){
+					var image = {
+						id:image.id,
+						url:image.url,
+						size:'thumbnail',
+					}
+					var imageUrl = elementor.imagesManager.getImageUrl(image)
+					#>
+					<img src = '{{ imageUrl }}'/>
+					<#
+				});
+			#>
+		</div>
+		<!-- End Class 2.5 -->
 		<?php			
-		//End Class 1.7
+		
 	}
 }
