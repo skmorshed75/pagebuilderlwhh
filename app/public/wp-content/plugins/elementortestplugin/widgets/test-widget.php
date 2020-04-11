@@ -212,6 +212,23 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			]
 		);
 		//End Class 2.5
+
+		//Class 2.6
+		$this->add_control(
+			'demo_icon',
+			[
+				'label' => __('Icon Control','eltp'),
+				'type' => \Elementor\Controls_Manager::ICON,
+				'include' => [
+					'fa fa-facebook',
+					'fa fa-twitter',
+					'fa fa-rss',
+					'fa fa-github'
+				],
+				'default' => 'fa fa-rss'
+			]
+		);
+		//End Class 2.6
 		$this->end_controls_section();
 
 
@@ -263,6 +280,12 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 		echo '</pre>';
 		echo '</div>';
 		//End Class 2.5
+		
+		//Class 2.6
+		echo '<div>';
+		echo '<i class = "'. $settings['demo_icon'] .'"></i>';
+		echo '</div>';
+		//End Class 2.6
 	}
 
 	protected function _content_template() {
@@ -331,6 +354,12 @@ class Elementor_Test_Widget extends \Elementor\Widget_Base {
 			#>
 		</div>
 		<!-- End Class 2.5 -->
+
+		<!-- Class 2.6 -->
+		<div>
+			<i class = "{{settings.demo_icon}}"></i>
+		</div>
+		<!-- End Class 2.6 -->
 		<?php			
 		
 	}
