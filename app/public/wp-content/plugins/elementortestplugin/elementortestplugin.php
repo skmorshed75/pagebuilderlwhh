@@ -60,7 +60,19 @@ final class ElementorTestExtension {
 		//class 1.4
 		add_action('elementor/elements/categories_registered', [$this, 'register_new_category']);
 		//end class 1.4
+	
+		//class 3.1
+		add_action('elementor/frontend/after_enqueue_styles', [$this, 'widget_styles']);
+		//end class 3.1
 	}
+
+
+
+	//Class 3.1
+	function widget_styles(){
+		wp_enqueue_style("froala", "//cdnjs.cloudflare.com/ajax/libs/froala-design-blocks/2.0.1/css/froala_blocks.min.css");
+	}
+	//End Class 3.1
 	//class 1.4
 	public function register_new_category($manager) {
 		$manager->add_category('test_category', [
@@ -81,9 +93,11 @@ final class ElementorTestExtension {
 		// Include Widget files
 		require_once( __DIR__ . '/widgets/test-widget.php' );
 		require_once( __DIR__ . '/widgets/faq-widget.php' ); //Class 2.12
+		require_once( __DIR__ . '/widgets/pricing-widget.php' ); //Class 3.1
 		// Register widget (use \Elementor\Plugin as Plugin line 14)
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Test_Widget() );
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Faq_Widget() );
+		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Pricing_Widget() );
 	}
 
 	public function admin_notice_minimum_elementor_version() {

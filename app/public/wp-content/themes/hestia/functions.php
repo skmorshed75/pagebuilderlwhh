@@ -39,7 +39,12 @@ function hestia_no_support_5_3() {
 	printf( '<div class="error"><p>%1$s</p></div>', esc_html( $message ) );
 }
 
-
+//Class 3.2
+function my_pricing_prefix($prefix){
+	return "BDT.";
+}
+add_filter('pricing_prefix','my_pricing_prefix');
+//End Class 3.2
 if ( version_compare( PHP_VERSION, '5.3.29' ) < 0 ) {
 	/**
 	 * Add notice for PHP upgrade.
