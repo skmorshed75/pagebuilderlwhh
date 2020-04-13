@@ -42,6 +42,15 @@ class Elementor_pricing_Widget extends \Elementor\Widget_Base {
 			'label' => __('Title', 'eltp'),
 			'type' => \Elementor\Controls_Manager::TEXT,
 		]);
+
+		//Class 3.4
+		$repeater->add_control('featured',[
+			'label' => __('Featured', 'eltp'),
+			'type' => \Elementor\Controls_Manager::SWITCHER,
+			'default' => false,
+		]);
+		//End Class 3.4
+
 		$repeater->add_control('description',[
 			'label' => __('Description', 'eltp'),
 			'type' => \Elementor\Controls_Manager::TEXTAREA,
@@ -79,50 +88,48 @@ class Elementor_pricing_Widget extends \Elementor\Widget_Base {
 
 		//End Class 3.2
 
-?>
-  <section class="fdb-block" style="background-image: url(<?php echo plugins_url("../assets/img/red.svg",__FILE__); ?>;">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col">
-          	<!-- class 3.2 -->
-            <h1 class="text-white"><?php echo esc_html($heading); ?></h1>
-            <!-- class 3.2 -->
-          </div>
-        </div>
-    
-        <div class="row mt-5 align-items-center">
-        	<?php //Class 3.2
-        	if($pricings){
-        		foreach($pricings as $pricing) {
-        			?>
-			        <div class="col-12 col-sm-10 col-md-8 m-auto col-lg-4 text-center">
-			            <div class="fdb-box p-4">
-			              <h2><?php echo esc_html($pricing['title']); ?></h2>
-			              <p class="lead"><?php echo esc_html($pricing['description']); ?></p>
-			    
-			              <p class="h1 mt-5 mb-5"><?php echo apply_filters('pricing_prefix','$'); ?><?php echo esc_html($pricing['pricing']) ; ?></p>
-			    
-			              <p><a href="<?php echo esc_url($pricing['button_url']['url'])?>" class="btn btn-dark"><?php echo esc_html($pricing['button_title']) ; ?></a></p>
-			            </div>
-			        </div>
-        			<?php
-        		}
-        	}
-        	//End Class 3.2
-        	?>
+		?>
+		<section class="fdb-block" style="background-image: url(<?php echo plugins_url("../assets/img/red.svg",__FILE__); ?>;">
+			<div class="container">
+				<div class="row text-center">
+					<div class="col">
+					<!-- class 3.2 -->
+					<h1 class="text-white"><?php echo esc_html($heading); ?></h1>
+					<!-- class 3.2 -->
+					</div>
+				</div>
+		    
+		        <div class="row mt-5 align-items-center">
+		        	<?php //Class 3.2
+		        	if($pricings){
+		        		foreach($pricings as $pricing) {
+		        			//Class 3.4
+		        			$button_class = $pricing['featured']?'secondary':'dark';
+		        			//End Class 3.4
+		        			?>
+							<div class="col-12 col-sm-10 col-md-8 m-auto col-lg-4 text-center">
+								<div class="fdb-box p-4">
+									<h2><?php echo esc_html($pricing['title']); ?></h2>
+									<p class="lead"><?php echo esc_html($pricing['description']); ?></p>
 
-        </div>
-      </div>
-    </section>  
-<?php
+									<p class="h1 mt-5 mb-5"><?php echo apply_filters('pricing_prefix','$'); ?><?php echo esc_html($pricing['pricing']) ; ?></p>
+									<!-- Class 3.3 & 3.4 -->
+									<p><a href="<?php echo esc_url($pricing['button_url']['url'])?>" class="btn btn-<?php echo esc_attr($button_class); ?>"><?php echo esc_html($pricing['button_title']) ; ?></a></p>
+								</div>
+							</div>
+		        			<?php
+		        		}
+		        	}
+		        	//End Class 3.2
+		        	?>
+				</div>
+			</div>
+		</section>
+		<?php
 	}
-
 	protected function _content_template() {
-		
+
 	}
-
 }
-
-
 
 ?>
