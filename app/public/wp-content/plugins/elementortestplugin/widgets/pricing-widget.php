@@ -30,10 +30,28 @@ class Elementor_pricing_Widget extends \Elementor\Widget_Base {
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
+
+		//Class 3.5
+		$this->add_control('style',[
+			'label' => __('Style','eltp'),
+			'type' => \Elementor\Controls_Manager::SELECT,
+			'options' =>[
+				'default' => __('Default', 'eltp'),
+				'blue' => __('Blue Style','eltp'),
+			],
+			'default' =>'default',
+		]);
+		$this->add_control('style_select_hidden',[
+			'label' => __('Title','eltp'),
+			'type' => \Elementor\Controls_Manager::HIDDEN,
+			'default' => 'style_select_hidden'
+		]);
+		//End class 3.5
+
 		//Class 3.2
 		$this->add_control('title',[
 			'label' => __('Title','eltp'),
-			'tab' => \Elementor\Controls_Manager::TEXT,
+			'type' => \Elementor\Controls_Manager::TEXT,
 		]);
 
 		$repeater = new \Elementor\Repeater();
@@ -50,6 +68,18 @@ class Elementor_pricing_Widget extends \Elementor\Widget_Base {
 			'default' => false,
 		]);
 		//End Class 3.4
+
+		//class 3.5
+		$repeater->add_control('items',[
+			'label' => __('Items', 'eltp'),
+			'type' => \Elementor\Controls_Manager::TEXTAREA,
+		]);
+		$repeater->add_control('items_hidden_selector',[
+			'label' => __('Title', 'eltp'),
+			'type' => \Elementor\Controls_Manager::HIDDEN,
+			'default' => "items_hidden_selector"
+		]);
+		//end class 3.5
 
 		$repeater->add_control('description',[
 			'label' => __('Description', 'eltp'),
@@ -85,47 +115,95 @@ class Elementor_pricing_Widget extends \Elementor\Widget_Base {
 		//Class 3.2
 		$heading = $this->get_settings('title');
 		$pricings = $this->get_settings('pricings');
-
 		//End Class 3.2
 
-		?>
-		<section class="fdb-block" style="background-image: url(<?php echo plugins_url("../assets/img/red.svg",__FILE__); ?>;">
-			<div class="container">
-				<div class="row text-center">
-					<div class="col">
-					<!-- class 3.2 -->
-					<h1 class="text-white"><?php echo esc_html($heading); ?></h1>
-					<!-- class 3.2 -->
+		//class 3.5
+		$style = $this->get_settings('style');
+
+		if('default' == $style){
+
+			?>
+			<section class="fdb-block" style="background-image: url(<?php echo plugins_url("../assets/img/red.svg",__FILE__); ?>;">
+				<div class="container">
+					<div class="row text-center">
+						<div class="col">
+						<!-- class 3.2 -->
+						<h1 class="text-white"><?php echo esc_html($heading); ?></h1>
+						<!-- class 3.2 -->
+						</div>
+					</div>
+			    
+			        <div class="row mt-5 align-items-center">
+			        	<?php //Class 3.2
+			        	if($pricings){
+			        		foreach($pricings as $pricing) {
+			        			//Class 3.4
+			        			$button_class = $pricing['featured']?'secondary':'dark';
+			        			//End Class 3.4
+			        			?>
+								<div class="col-12 col-sm-10 col-md-8 m-auto col-lg-4 text-center">
+									<div class="fdb-box p-4">
+										<h2><?php echo esc_html($pricing['title']); ?></h2>
+										<p class="lead"><?php echo esc_html($pricing['description']); ?></p>
+
+										<p class="h1 mt-5 mb-5"><?php echo apply_filters('pricing_prefix','$'); ?><?php echo esc_html($pricing['pricing']) ; ?></p>
+										<!-- Class 3.3 & 3.4 -->
+										<p><a href="<?php echo esc_url($pricing['button_url']['url'])?>" class="btn btn-<?php echo esc_attr($button_class); ?>"><?php echo esc_html($pricing['button_title']) ; ?></a></p>
+									</div>
+								</div>
+			        			<?php
+			        		}
+			        	}
+			        	//End Class 3.2
+			        	?>
 					</div>
 				</div>
-		    
-		        <div class="row mt-5 align-items-center">
-		        	<?php //Class 3.2
-		        	if($pricings){
-		        		foreach($pricings as $pricing) {
-		        			//Class 3.4
-		        			$button_class = $pricing['featured']?'secondary':'dark';
-		        			//End Class 3.4
-		        			?>
-							<div class="col-12 col-sm-10 col-md-8 m-auto col-lg-4 text-center">
-								<div class="fdb-box p-4">
-									<h2><?php echo esc_html($pricing['title']); ?></h2>
-									<p class="lead"><?php echo esc_html($pricing['description']); ?></p>
+			</section>
+			<?php
+		} else {
+			?>
+			<section class="fdb-block">
+				<div class="container">
+					<div class="row text-center">
+						<div class="col">
+							<h1><?php echo esc_html($heading); ?></h1>
+						</div>
+					</div>
+		   
+			        <div class="row mt-5 align-items-center">
+			        	<?php 
+			        	if($pricings){
+			        		foreach($pricings as $pricing){
+			        			$button_class = $pricing['featured']?'secondary' : 'dark';
+			        			?>
+								<div class="col-12 col-sm-10 col-md-8 m-auto col-lg-4 text-left">
+									<div class="fdb-box fdb-touch p-5 rounded">
+										<h2><?php echo esc_html($pricing['title']); ?> <strong class="float-xl-right d-lg-block d-xl-inline"><?php echo apply_filters('pricing_prefix','$'); ?><?php echo esc_html($pricing['pricing']); ?></strong></h2>
+										<p class="lead"><em><?php echo esc_html($pricing['description']); ?></em></p>
 
-									<p class="h1 mt-5 mb-5"><?php echo apply_filters('pricing_prefix','$'); ?><?php echo esc_html($pricing['pricing']) ; ?></p>
-									<!-- Class 3.3 & 3.4 -->
-									<p><a href="<?php echo esc_url($pricing['button_url']['url'])?>" class="btn btn-<?php echo esc_attr($button_class); ?>"><?php echo esc_html($pricing['button_title']) ; ?></a></p>
+										<ul class="text-left pl-3 mt-5 mb-5">
+											<?php 
+											$items = explode("\n", trim($pricing['items']));
+											foreach($items as $item) {
+												if($item){
+													echo "<li>{$item}</li>";
+												}												
+											}
+											?>
+										</ul>
+
+										<p class="text-left pt-4"><a href="https://www.froala.com" class="btn btn-<?php echo esc_attr($button_class); ?>">Buy Now</a></p>
+									</div>
 								</div>
-							</div>
-		        			<?php
-		        		}
-		        	}
-		        	//End Class 3.2
-		        	?>
+			          			<?php
+			          		}
+			        	}
+			        	?>		    
+					</div>
 				</div>
-			</div>
-		</section>
-		<?php
+			</section>
+			<?php
+		}
 	}
 	protected function _content_template() {
 

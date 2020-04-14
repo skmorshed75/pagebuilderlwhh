@@ -64,9 +64,17 @@ final class ElementorTestExtension {
 		//class 3.1
 		add_action('elementor/frontend/after_enqueue_styles', [$this, 'widget_styles']);
 		//end class 3.1
+
+		//class 3.5
+		add_action('elementor/editor/after_enqueue_scripts', [$this, 'pricing_editor_assets']);
+		//end class 3.5
 	}
 
-
+	//Class 3.5
+	function pricing_editor_assets() {
+		wp_enqueue_script("pricing-editor-js", plugins_url("/assets/js/main.js", __FILE__), array("jquery"), time(), true);
+	}
+	//end Class 3.5
 
 	//Class 3.1
 	function widget_styles(){

@@ -45,6 +45,7 @@ function my_pricing_prefix($prefix){
 }
 add_filter('pricing_prefix','my_pricing_prefix');
 //End Class 3.2
+
 if ( version_compare( PHP_VERSION, '5.3.29' ) < 0 ) {
 	/**
 	 * Add notice for PHP upgrade.
