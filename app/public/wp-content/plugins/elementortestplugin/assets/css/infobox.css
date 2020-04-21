@@ -1,0 +1,48 @@
+//Class 3.8
+
+
+.infostamp {
+	border-top: 1px solid #eee;
+	box-shadow: 0 0.125rem 0.25rem 0 rgba(79,90,109,0.25);
+	color: #222;
+}
+.infostamp .stamp {
+	width: 100px;
+	min-height: 100px;
+	float:left;
+	text-align: center;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	background:#b6b8dc;
+}
+
+
+.infostamp .stamp svg{
+	width: 55px;
+}
+
+.infostamp .data {
+	width:calc(100% - 100px);
+	margin-left: 100px;
+	padding-left: 15px;
+	padding-top: 12px;
+	font-size: 14px;
+}
+
+.infostamp .data h3 {
+	font-size: 15px;
+	padding:0px;
+	margin:0px;
+	margin-bottom: 5px;
+}
+
+
+.infostamp .data ul {
+	padding-left: 25px;
+	margin: 0px;
+}
+
+.infostamp .clear {
+	clear: both;
+}

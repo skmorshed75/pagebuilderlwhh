@@ -90,6 +90,9 @@ final class ElementorTestExtension {
 	//Class 3.1
 	function widget_styles(){
 		wp_enqueue_style("froala", "//cdnjs.cloudflare.com/ajax/libs/froala-design-blocks/2.0.1/css/froala_blocks.min.css");
+		//Class 3.8
+		wp_enqueue_style("infobox-css", plugins_url("/assets/css/infobox.css", __FILE__));
+		//end Class 3.8
 	}
 	//End Class 3.1
 	//class 1.4
@@ -114,11 +117,13 @@ final class ElementorTestExtension {
 		require_once( __DIR__ . '/widgets/faq-widget.php' ); //Class 2.12
 		require_once( __DIR__ . '/widgets/pricing-widget.php' ); //Class 3.1
 		require_once( __DIR__ . '/widgets/progressbar-widget.php' ); //Class 3.6
+		require_once( __DIR__ . '/widgets/infobox-widget.php' ); //Class 3.8
 		// Register widget (use \Elementor\Plugin as Plugin line 14)
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Test_Widget() );
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Faq_Widget() );
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Pricing_Widget() );
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Progressbar_Widget() ); //Class 3.6
+		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Infobox_Widget() ); //Class 3.8
 	}
 
 	public function admin_notice_minimum_elementor_version() {
