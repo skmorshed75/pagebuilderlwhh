@@ -8,7 +8,7 @@ class Elementor_Faq_Widget extends \Elementor\Widget_Base {
 	}
 
 	public function get_title() {
-		return __("FAQ Widget","eltp");
+		return __("FAQ Widget","elementortestplugin");
 	}
 
 	public function get_icon() {
@@ -26,23 +26,23 @@ class Elementor_Faq_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'content_section',
 			[
-				'label' => __( 'Content', 'eltp' ),
+				'label' => __( 'Content', 'elementortestplugin' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
 		$repeater = new \Elementor\Repeater();
 		$repeater->add_control('title',[
-			'label' => __('Title','eltp'),
+			'label' => __('Title','elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::TEXT,
 		]);
 		$repeater->add_control('description',[
-			'label' => __('Description','eltp'),
+			'label' => __('Description','elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::TEXTAREA, // or WYSIWYG
 		]);
 
 		$this->add_control('faqs',[
-			'label' => __('FAQs', 'eltp'),
+			'label' => __('FAQs', 'elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::REPEATER,
 			'fields' => $repeater->get_controls(),
 			'title_fields' => '{{{ title }}}',

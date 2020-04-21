@@ -8,7 +8,7 @@ class Elementor_pricing_Widget extends \Elementor\Widget_Base {
 	}
 
 	public function get_title() {
-		return __("Pricing Widget","eltp");
+		return __("Pricing Widget","elementortestplugin");
 	}
 
 	public function get_icon() {
@@ -26,23 +26,23 @@ class Elementor_pricing_Widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'content_section',
 			[
-				'label' => __( 'Content', 'eltp' ),
+				'label' => __( 'Content', 'elementortestplugin' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
 		//Class 3.5
 		$this->add_control('style',[
-			'label' => __('Style','eltp'),
+			'label' => __('Style','elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::SELECT,
 			'options' =>[
-				'default' => __('Default', 'eltp'),
-				'blue' => __('Blue Style','eltp'),
+				'default' => __('Default', 'elementortestplugin'),
+				'blue' => __('Blue Style','elementortestplugin'),
 			],
 			'default' =>'default',
 		]);
 		$this->add_control('style_select_hidden',[
-			'label' => __('Title','eltp'),
+			'label' => __('Title','elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::HIDDEN,
 			'default' => 'style_select_hidden'
 		]);
@@ -50,20 +50,20 @@ class Elementor_pricing_Widget extends \Elementor\Widget_Base {
 
 		//Class 3.2
 		$this->add_control('title',[
-			'label' => __('Title','eltp'),
+			'label' => __('Title','elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::TEXT,
 		]);
 
 		$repeater = new \Elementor\Repeater();
 
 		$repeater->add_control('title',[
-			'label' => __('Title', 'eltp'),
+			'label' => __('Title', 'elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::TEXT,
 		]);
 
 		//Class 3.4
 		$repeater->add_control('featured',[
-			'label' => __('Featured', 'eltp'),
+			'label' => __('Featured', 'elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::SWITCHER,
 			'default' => false,
 		]);
@@ -71,36 +71,36 @@ class Elementor_pricing_Widget extends \Elementor\Widget_Base {
 
 		//class 3.5
 		$repeater->add_control('items',[
-			'label' => __('Items', 'eltp'),
+			'label' => __('Items', 'elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::TEXTAREA,
 		]);
 		$repeater->add_control('items_hidden_selector',[
-			'label' => __('Title', 'eltp'),
+			'label' => __('Title', 'elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::HIDDEN,
 			'default' => "items_hidden_selector"
 		]);
 		//end class 3.5
 
 		$repeater->add_control('description',[
-			'label' => __('Description', 'eltp'),
+			'label' => __('Description', 'elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::TEXTAREA,
 		]);
 		$repeater->add_control('pricing',[
-			'label' => __('Pricing', 'eltp'),
+			'label' => __('Pricing', 'elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::TEXT,
-			'default' => __('Buy Now','eltp')
+			'default' => __('Buy Now','elementortestplugin')
 		]);
 		$repeater->add_control('button_url',[
-			'label' => __('Button URL', 'eltp'),
+			'label' => __('Button URL', 'elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::URL,
 		]);
 		$repeater->add_control('button_title',[
-			'label' => __('Button Title', 'eltp'),
+			'label' => __('Button Title', 'elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::TEXT,
 		]);
 
 		$this->add_control('pricings',[
-			'label' => __('Pricing Columns','eltp'),
+			'label' => __('Pricing Columns','elementortestplugin'),
 			'type' => \Elementor\Controls_Manager::REPEATER,
 			'fields' => $repeater->get_controls(),
 			'title_field' => '{{{ title }}}',

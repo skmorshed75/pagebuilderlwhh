@@ -68,7 +68,18 @@ final class ElementorTestExtension {
 		//class 3.5
 		add_action('elementor/editor/after_enqueue_scripts', [$this, 'pricing_editor_assets']);
 		//end class 3.5
+
+		//class 3.6
+		add_action('elementor/frontend/after_enqueue_scripts', [$this, 'progressbar_assets']);
+		//end class 3.6
 	}
+
+	//Class 3.6
+	function progressbar_assets(){
+		wp_enqueue_script("progressbar-js", plugins_url("/assets/js/progressbar.js", __FILE__), null, time(), true);
+		wp_enqueue_script("progessbar-helper-js", plugins_url("/assets/js/scripts.js", __FILE__), null, time(), true);
+	}
+	//End Class 3.6
 
 	//Class 3.5
 	function pricing_editor_assets() {
@@ -102,10 +113,12 @@ final class ElementorTestExtension {
 		require_once( __DIR__ . '/widgets/test-widget.php' );
 		require_once( __DIR__ . '/widgets/faq-widget.php' ); //Class 2.12
 		require_once( __DIR__ . '/widgets/pricing-widget.php' ); //Class 3.1
+		require_once( __DIR__ . '/widgets/progressbar-widget.php' ); //Class 3.6
 		// Register widget (use \Elementor\Plugin as Plugin line 14)
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Test_Widget() );
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Faq_Widget() );
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Pricing_Widget() );
+		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Progressbar_Widget() ); //Class 3.6
 	}
 
 	public function admin_notice_minimum_elementor_version() {
