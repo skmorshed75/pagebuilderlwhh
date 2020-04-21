@@ -6,20 +6,25 @@
 			//$(".progress").each(function(){
 			$scope.find(".progress").each(function(){
 				var element = $(this)[0];
+				//Class 3.7
+				var bar_color = $(this).data("bar_color");
+				var bar_fill = $(this).data("bar_fill");
+				var bar_height = $(this).data("bar_height");
+				//end Class 3.7
 				if(element) {
 				var bar = new ProgressBar.Line(element, {
 					strokeWidth: 4,
 					easing: 'easeInOut',
 					duration: 1400,
-					color: '#FFEA82',
-					trailColor: '#eee',
+					color: bar_color,
+					trailColor: '#777',
 					trailWidth: 1,
-					svgStyle: {width: '80%', height: '10px'},
+					svgStyle: {width: '80%', height: bar_height},
 					text: {
 					    style: {
 					    	// Text color.
 							// Default: same as stroke color (options.color)
-							color: '#999',
+							color: '#333',
 							position: 'absolute',
 							right: '0',
 							top: '0px',
@@ -34,7 +39,7 @@
 					}
 				});
 			}
-				bar.animate(0.8);  // Number from 0.0 to 1.0
+				bar.animate(bar_fill);  // Number from 0.0 to 1.0
 			});
 
 		});
