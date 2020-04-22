@@ -2,9 +2,9 @@
 //Class 3.6
 ;(function($){
 	$(window).on("elementor/frontend/init", function(){
-		elementorFrontend.hooks.addAction('frontend/element_ready/ProgressbarWidget.default', function($scope,){
+		elementorFrontend.hooks.addAction('frontend/element_ready/ProgressbarWidget.default', function(scope,$){
 			//$(".progress").each(function(){
-			$scope.find(".progress").each(function(){
+			$(scope).find(".progress").each(function(){
 				var element = $(this)[0];
 				//Class 3.7
 				var bar_color = $(this).data("bar_color");
