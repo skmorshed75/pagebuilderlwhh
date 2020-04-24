@@ -9,6 +9,8 @@ Author URI: https://morshed.me
 License: GPLv2 or later
 Text Domain: lwhhedh
 Domain Path: /languages/
+
+Class 6.2
 */
 
 final class Elementor_Dual_Heading_Extension {
